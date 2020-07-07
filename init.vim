@@ -23,6 +23,8 @@ call plug#begin()
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'alvan/vim-closetag'
+	Plug 'airblade/vim-gitgutter'
 
   "enable ncm2 for all buffers
   autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -56,8 +58,12 @@ set inccommand=split
 set tabstop=2
 set shiftwidth=2
 
+set number relativenumber
+set nu rnu
+set clipboard=unnamed
+
 let mapleader="\<space>"
-nnoremap <leader>; A;<esc>
+ "<leader>; A;<esc>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 
@@ -65,6 +71,9 @@ nnoremap <c-b> :NERDTreeToggle<cr>
 
 
 nnoremap <c-p> :Files<cr>
+nnoremap <c-f> :s /
+nnoremap <c-z> :u<cr>
+nnoremap <c-s> :w<cr>
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -83,6 +92,7 @@ let g:coc_global_extensions = [
 " if hidden is not set, TextEdit might fail.
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
+set guicursor=
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
